@@ -1,5 +1,5 @@
 import { db } from "./db.js";
-import { Application } from "../types.js";
+import { type Application } from "../types.js";
 
 export function getApps(): Application[]{
     const query = `SELECT * FROM applications`

@@ -1,6 +1,6 @@
 import psList from "ps-list";
 import { getApps } from "./database/dbController.js";
-import { Application } from "./types.js";
+import { type Application } from "./types.js";
 import { updateApp } from "./database/dbController.js";
 import { print } from "./util.js";
 
