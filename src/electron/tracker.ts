@@ -2,9 +2,9 @@ import psList from "ps-list";
 import { getApps } from "./database/dbController.js";
 import { Application } from "./types.js";
 import { updateApp } from "./database/dbController.js";
+import { print } from "./util.js";
 
-const POLLING_INTERVAL = 5000;
-
+const POLLING_INTERVAL = 10000;
 
 export function pollApplications() {
     setInterval(async () => {
@@ -21,19 +21,19 @@ export function pollApplications() {
                 const appIndex = getIndexOfApp(data[i].name, dbApps)
                 if(appIndex){
                     const app = dbApps[appIndex]
-                    console.log(`FOUND: ${app.name} at Index ${appIndex}`)
+                    print("INFO", `FOUND: ${app.name} at Index ${appIndex}`)
                     const updatedApp: Application = {
                         id: app.id,
                         name: app.name,
                         nickname: app.nickname,
                         path: app.path,
-                        totalActive: app.totalActive + 5,
+                        totalActive: app.totalActive + (POLLING_INTERVAL/1000),
                         lastActive: new Date().toISOString(),
                         firstActive: app.firstActive === null ? new Date().toISOString() : app.firstActive 
                     }
                     updateApp(updatedApp)
                 }else{
-                    console.log(`FOUND: ${data[i].name} but could not find corresponding Index.`)
+                    print("ERROR", `FOUND: ${data[i].name} but could not find corresponding Index.`)
                 }
             }
         }
