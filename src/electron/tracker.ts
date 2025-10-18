@@ -19,7 +19,7 @@ export function pollApplications() {
         for(let i = 0; i < data.length; i++){
             if(dbAppsNames.indexOf(data[i].name.toLowerCase()) > -1){
                 const appIndex = getIndexOfApp(data[i].name, dbApps)
-                if(appIndex){
+                if(appIndex != null){
                     const app = dbApps[appIndex]
                     print("INFO", `FOUND: ${app.name} at Index ${appIndex}`)
                     const updatedApp: Application = {

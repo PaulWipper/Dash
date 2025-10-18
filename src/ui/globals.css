@@ -1,4 +1,15 @@
+@font-face{
+    font-family: Lily_Script_One;
+    src: url("./assets/fonts/Lily_Script_One/LilyScriptOne-Regular.ttf");
+}
+
+@font-face{
+    font-family: M_PLUS_2;
+    src: url("./assets/fonts/M_PLUS_2/MPLUS2-VariableFont_wght.ttf");
+}
+
 @import "tailwindcss";
+
 
 :root {
     --neutral-900: #141414;
@@ -14,6 +25,7 @@
 }
 
 @theme {
+    /*COLORS*/
     --color-neutral-900: var(--neutral-900);
     --color-neutral-800: var(--neutral-800);
     --color-neutral-700: var(--neutral-700);
@@ -24,4 +36,21 @@
     --color-neutral-200: var(--neutral-200);
     --color-neutral-100: var(--neutral-100);
     --color-neutral-0: var(--neutral-0);
+
+    /*FONTS*/
+    --font-lily: Lily_Script_One, sans-serif;
+    --font-mp2: M_PLUS_2, sans-serif;
+    
+    /*TEXTS*/
+    --text-p: 16px;
+
+    /*STYLES*/
+    --radius-8: 8px;
+    --radius-20: 20px
+}
+
+body {
+    background: var(--color-neutral-800);
+    font-family: "M_PLUS_2";
+    color: var(--color-neutral-200);
 }
