@@ -1,4 +1,33 @@
-import { Home, Search, Library, ChartLine, User2Icon, Ellipsis } from "lucide-react"
+import { User2Icon, Ellipsis } from "lucide-react"
+import type NavbaritemProps from "../../Models/NavbarItemProps"
+import NavbarItem from "./NavbarItem"
+
+const ITEMS: NavbaritemProps[] = [
+    {
+        title: "Home",
+        icon: "home",
+        state: "ACTIVE",
+        link: "/"
+    },
+    {
+        title: "Discover",
+        icon: "search",
+        state: "DISABLED",
+        link: "/"
+    },
+    {
+        title: "Library",
+        icon: "library",
+        state: "DEFAULT",
+        link: "/"
+    },
+    {
+        title: "Statistics",
+        icon: "chart-line",
+        state: "DISABLED",
+        link: "/"
+    },
+]
 
 export default function Navbar() {
     return(
@@ -6,28 +35,9 @@ export default function Navbar() {
             <div className="flex flex-col gap-6">
                 <h3 className="font-lily text-3xl">Dash</h3>
                 <div className="flex flex-col">
-                    <a href="/" className="flex items-center gap-2 py-2 px-3 bg-neutral-200 rounded-8">
-                        <Home color="#1F1F1F" size={16}/>
-                        <h3 className="text-neutral-600 text-p">Home</h3>
-                    </a>
-                    <div className="flex items-center justify-between">
-                        <a href="" className="flex items-center gap-2 py-2 px-3 bg-neutral-600 rounded-8 pointer-events-none">
-                            <Search color="#3F3F3F" size={16}/>
-                            <h3 className="text-p text-neutral-400">Discover</h3>
-                        </a>
-                        <h4 className="py-1 px-2 text-[12px] bg-neutral-400 rounded-8 text-neutral-200">Coming soon</h4>
-                    </div>
-                    <a href="/" className="flex items-center gap-2 py-2 px-3 bg-neutral-600 rounded-8">
-                        <Library color="#BCBCBC" size={16}/>
-                        <h3 className="text-p">Library</h3>
-                    </a>
-                    <div className="flex items-center justify-between">
-                        <a href="" className="flex items-center gap-2 py-2 px-3 bg-neutral-600 rounded-8 pointer-events-none">
-                            <ChartLine color="#3F3F3F" size={16}/>
-                            <h3 className="text-p text-neutral-400">Statistics</h3>
-                        </a>
-                        <h4 className="py-1 px-2 text-[12px] bg-neutral-400 rounded-8 text-neutral-200">Coming soon</h4>
-                    </div>
+                    {ITEMS.map((item) => (
+                        <NavbarItem key={item.title} item={item}/>
+                    ))}
                 </div>
             </div>
             <a href="" className="flex flex-row gap-2 justify-between items-center">
