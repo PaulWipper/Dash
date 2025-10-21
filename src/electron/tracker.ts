@@ -1,7 +1,7 @@
 import psList from "ps-list";
 import { getApps, updateApp } from "./database/dbController.js";
 import { type Application } from "./types.js";
-import { print } from "./util.js";
+import { Print } from "./util.js";
 
 const POLLING_INTERVAL = 10000;
 
@@ -15,7 +15,7 @@ export function pollApplications() {
             if(app == undefined) {
                 continue
             } else {
-                print("INFO", `FOUND: ${app.name}`)
+                Print.info(`FOUND: ${app.name}`)
 
                 app.totalActive += (POLLING_INTERVAL/1000)
                 app.lastActive = new Date().toISOString()
