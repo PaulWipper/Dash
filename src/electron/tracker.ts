@@ -13,7 +13,7 @@ export function pollApplications() {
         for(const element of data) {
             const app = dbApps.get(element.name.toLowerCase())
             if(app == undefined) {
-                print("ERROR", `could not find ${element.name} in database`)
+                continue
             } else {
                 print("INFO", `FOUND: ${app.name}`)
 
