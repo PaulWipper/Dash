@@ -2,7 +2,7 @@ import { app } from "electron";
 import fs from "fs";
 import path from "path";
 import Database from "better-sqlite3";
-import { print } from "../util.js";
+import { Print } from "../util.js";
 
 export type DB = Database.Database;
 export let db: DB;
@@ -20,10 +20,10 @@ export function initDatabase(): DB {
         const legacyPath = path.join(process.cwd(), DB_FILENAME);
         if (!fs.existsSync(dbPath) && fs.existsSync(legacyPath)) {
             fs.copyFileSync(legacyPath, dbPath);
-            print("OK", `Migrate existing DB from ${legacyPath} → ${dbPath}`);
+            Print.ok(`Migrate existing DB from ${legacyPath} → ${dbPath}`);
         }
     } catch (e) {
-        print("WARN", `Migration skipped: ${(e as Error).message}`);
+        Print.warn(`Migration skipped: ${(e as Error).message}`);
     }
 
     db = new Database(dbPath);
@@ -72,6 +72,6 @@ export function initDatabase(): DB {
     });
     seed(initialData);
 
-    print("OK", `DB ready at: ${dbPath}`);
+    Print.ok(`DB ready at: ${dbPath}`);
     return db;
 }
